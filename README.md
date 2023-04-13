@@ -1,5 +1,5 @@
 # Lab-7_202001138
-Based on Testcase Generation and Black/White Testing
+Based on Testcases Generation and Black & White Testing
 ## Section A
 ### Previous Date Problem
 
@@ -317,7 +317,7 @@ public class TestFunctions {
 
 ### P6: Assumes the problem domain of P4 with A, B, and C as floating values instead of integers
 
-### A. Equivalence classes for the system
+**A. Equivalence classes for the system**
 
 The possible equivalence classes and their corresponding conditions are as follows:
 
@@ -329,7 +329,7 @@ The possible equivalence classes and their corresponding conditions are as follo
 | Equilateral Triangle | A == B and B == C                                     |
 | Right-angle Triangle | A^2 + B^2 = C^2 or A^2 = B^2 + C^2 or B^2 + A^2 = C^2 |
 
-### B. Test Cases for Equivalence Classes
+**B. Test Cases for Equivalence Classes**
 
 Following are list of test cases each belonging to one of the defined Equivalence class
 
@@ -341,74 +341,124 @@ Following are list of test cases each belonging to one of the defined Equivalenc
 | 4         | A = 4, B = 6, C = 7 | Scalene Triangle     |
 | 5         | A = 1, B = 2, C = 3 | Invalid Triangle     |
 
-### C. Boundary Condition A + B > C (scalene triangle)
+**C. Boundary Condition A + B > C (scalene triangle)**
 
 Below is the list of possible corner cases looking like scalene triangle but are not
 
 | Test Case | Condition                 | Expected Outcome |
 | --------- | ------------------------- | ---------------- |
-| 1         | A = 2, B = 3, C = 5       | Invalid Triangle |
-| 2         | A = 1, B = 2, C = 3       | Invalid Triangle |
-| 3         | A = 1, B = 1, C = 2       | Invalid Triangle |
-| 4         | A = 0.1, B = 0.1, C = 0.3 | Invalid Triangle |
-| 5         | A = 1, B = 2, C = 2.9     | Scalene Triangle |
+| 1         | A = 2, B = 1, C = 5       | Invalid Triangle |
+| 2         | A = 1, B = 2, C = 4       | Invalid Triangle |
+| 3         | A = 2, B = 2, C = 5       | Invalid Triangle |
+| 4         | A = 0.1, B = 0.2, C = 0.3 | Invalid Triangle |
+| 5         | A = 1, B = 2, C = 2.5     | Scalene Triangle |
 
-### D. Boundary Condition A = C (isosceles triangle)
+**D. Boundary Condition A = C (isosceles triangle)**
 
 Below is the list of possible corner cases looking like isosceles triangle but are not
 
 | Test Case | Condition                   | Expected Outcome   |
 | --------- | --------------------------- | ------------------ |
 | 1         | A = -4, B = 3, C = -4       | Invalid Triangle   |
-| 2         | A = 0, B = 2, C = 0         | Invalid Triangle   |
-| 3         | A = 1, B = 3, C = 1         | Invalid Triangle   |
-| 4         | A = 0.1, B = 0.3, C = 0.1   | Invalid Triangle   |
-| 5         | A = 0.15, B = 0.2, C = 0.15 | Isosceles Triangle |
+| 2         | A = 1, B = 2, C = 1         | Invalid Triangle   |
+| 3         | A = 1, B = 4, C = 1         | Invalid Triangle   |
+| 4         | A = 0.1, B = 0.4, C = 0.1   | Invalid Triangle   |
+| 5         | A = 0.15, B = 0.25, C = 0.15 | Isosceles Triangle |
 
-### E. Boundary Condition A = B = C (equilateral triangle)
+**E. Boundary Condition A = B = C (equilateral triangle)**
 
 Below is the list of possible corner cases looking like isosceles triangle but are not
 
 | Test Case | Condition                 | Expected Outcome     |
 | --------- | ------------------------- | -------------------- |
-| 1         | A = -4, B = -4, C = -4    | Invalid Triangle     |
+| 1         | A = -3, B = -3, C = -3    | Invalid Triangle     |
 | 2         | A = 0, B = 0, C = 0       | Invalid Triangle     |
-| 3         | A = 10, B = 10, C = 10    | Equilateral Triangle |
-| 4         | A = 0.1, B = 0.1, C = 0.1 | Equilateral Triangle |
+| 3         | A = 7, B = 7, C = 7    | Equilateral Triangle |
+| 4         | A = 0.2, B = 0.2, C = 0.2 | Equilateral Triangle |
 
-### F. Boundary Condition $A^2$ + $B^2$ = $C^2$ (right-angle triangle)
+**F. Boundary Condition $A^2$ + $B^2$ = $C^2$ (right-angle triangle)**
 
 Below is the list of possible corner cases looking like right-angle triangle but are not
 
 | Test Case | Condition                    | Expected Outcome      |
 | --------- | ---------------------------- | --------------------- |
-| 1         | A = 3, B = 4, C = 5          | Right Angled Triangle |
+| 1         | A = 5, B = 12, C = 13          | Right Angled Triangle |
 | 2         | A = -4, B = -3, C = 5        | Invalid Triangle      |
 | 3         | A = -1, B = -1.414, C = 1.73 | Invalid Triangle      |
 | 3         | A = 1, B = 1.414, C = 1.73   | Right Angled Triangle |
 
-### G. Non-triangle Case
+**G. Non-triangle Case**
 
 Below is the list of possible Invalid Triangle cases
 
 | Test Case | Condition                    | Expected Outcome |
 | --------- | ---------------------------- | ---------------- |
-| 1         | A = 3, B = 4, C = 8          | Invalid Triangle |
-| 2         | A = -4, B = -3, C = 5        | Invalid Triangle |
-| 3         | A = -1, B = -1.414, C = 1.73 | Invalid Triangle |
+| 1         | A = 3, B = 4, C = 9          | Invalid Triangle |
+| 2         | A = -4, B = -2, C = 5        | Invalid Triangle |
+| 3         | A = -1, B = -1, C = -1 | Invalid Triangle |
 | 4         | A = 111, B = 1.414, C = 9.73 | Invalid Triangle |
 | 5         | A = 1, B = 53, C = 9.73      | Invalid Triangle |
 | 6         | A = 1, B = 1.414, C = -9.73  | Invalid Triangle |
 | 7         | A = 0, B = 0, C = 0          | Invalid Triangle |
 
-### H. Non-positive Input
+**H. Non-positive Input**
 
 Below is the list of possible Invalid Triangle cases
 
 | Test Case | Condition        | Expected Outcome |
 | --------- | ---------------- | ---------------- |
-| 1         | a=-1, b=2, c=3   | Invalid Triangle |
+| 1         | a=-1, b=2, c=1   | Invalid Triangle |
 | 2         | a=-4, b=-5, c=-7 | Invalid Triangle |
-| 3         | a=1, b=-5, c=10  | Invalid Triangle |
+| 3         | a=1, b=-5, c=7  | Invalid Triangle |
 
 ---
+
+## Section B
+
+### 1. The control flow graph for the given problem is as follows
+
+![sfvdfv drawio](https://user-images.githubusercontent.com/123557378/231559001-a6ce137b-bb9a-4f8d-acb7-89c3d2357f4d.png)
+
+### 2. Criteria specific test case for flow graph
+
+**(a) Statement coverage test set:** In this all the statements in code should be covered
+<br/>
+| Test Number | Test Case |
+|-------------|-----------|
+| 1 | p is empty array |
+| 2 | p has one point object |
+| 3 | p has two points object with different y component |
+| 4 | p has two points object with different x component |
+| 5 | p has three or more point object with different y component |
+
+**(b) Branch Coverage test set:** In this all branch are taken atleast once
+<br/>
+
+| Test Number | Test Case |
+|-------------|-----------|
+| 1 | p is empty array |
+| 2 | p has one point object |
+| 3 | p has two points object with different y component |
+| 4 | p has two points object with different x component |
+| 5 | p has three or more point object with different y component |
+| 6 | p has three or more point object with same y component |
+| 7 | p has three or more point object with all same x component |
+| 8 | p has three or more point object with all different x component |
+| 9 | p has three or more point object with some same and some different x component |
+
+**(c) Basic condition coverage test set:** Each boolean expression has been evaluated to both true and false
+
+| Test Number | Test Case |
+|-------------|-----------|
+| 1 | p is empty array |
+| 2 | p has one point object |
+| 3 | p has two points object with different y component |
+| 4 | p has two points object with different x component |
+| 5 | p has three or more point object with different y component |
+| 6 | p has three or more point object with same y component |
+| 7 | p has three or more point object with all same x component |
+| 8 | p has three or more point object with all different x component |
+| 9 | p has three or more point object with some same and some different x component |
+| 10 | p has three or more point object with some same and some different y component |
+| 11 | p has three or more point object with all different y component |
+| 12 | p has three or more point object with all same y component |
