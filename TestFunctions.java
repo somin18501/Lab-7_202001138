@@ -6,8 +6,8 @@ import org.junit.Test;
 
 public class TestFunctions {
 
-	@Test
-	public void testLeapYear() {
+    @Test
+    public void testLeapYear() {
         assertEquals("29/02/2004", UnitTest.findPreviousDate("01/03/2004"));
         assertEquals("28/02/2007", UnitTest.findPreviousDate("01/03/2007"));
         assertEquals("INVALID", UnitTest.findPreviousDate("29/02/2007"));
