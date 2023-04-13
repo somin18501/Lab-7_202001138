@@ -3,41 +3,39 @@ Based on Testcase Generation and Black/White Testing
 ## Section A
 ### Previous Date Problem
 
-**Test Cases**
-| Test Case ID | Day | Month | Year | Expected Output |
-| -------------|-----|-------|------|-----------------|
-| 1 | 15 | 3 | 2010 | 14-3-2010 |
-| 2 | 1 | 1 | 1900 | Invalid |
-| 3 | 31 | 12 | 2015 | 30-12-2015 |
-| 4 | 29 | 2 | 2001 | Invalid |
-| 5 | 20 | 15 | 2008 | Invalid |
-| 6 | 31 | 12 | 1900 | 30-12-1900 |
-| 7 | 29 | 2 | 2012 | 28-2-2012 |
-| 8 | 1 | 3 | 2012 | 29-2-2012 | 
-| 9 | 30 | 2 | 2004 | Invalid |
-| 10 | 31 | 4 | 2014 | Invalid |
+**Test Cases: For Boundary Value Analysis (DD/MM/YYYY)**
+| Test Case ID |(DD/MM/YYYY)| Expected Output |
+| -------------|-----------------|-----------------|
+| 1 | 15/03/2010 | 14/03/2010 |
+| 2 | 01/01/1900 | Invalid |
+| 3 | 31/12/2015 | 30/12/2015 |
+| 4 | 29/02/2001 | Invalid |
+| 5 | 29/02/2012 | 28/02/2012 |
+| 6 | 31/05/2014 | 30/05/2014 |
+| 7 | 31/04/2014 | Invalid |
 
 **Equivalence Class Partitions** <br/>
-Day:
+Day (DD):
 | Partition ID | Range | Status |
 |----------------------|-------|--------|
-| E1 | 1<=dd<=28 | Valid |
-| E2 | dd<1 | Invalid |
-| E3 | dd>31 | Invalid |
-| E4 | dd=30 | Valid |
-| E5 | dd=29 | Valid for leap year |
-| E6 | dd=31 | Valid |
+| E1 | 1<=DD<=28 | Valid |
+| E2 | DD<1 | Invalid |
+| E3 | DD>31 | Invalid |
+| E4 | DD=30 | Valid |
+| E5 | DD=29 | Valid for leap year |
+| E6 | DD=31 | Valid |
 
-Month:
+Month (MM):
 | Partition ID | Range | Status |
 |----------------------|-------|--------|
-| E7 | 1<=mm<=12 | Valid |
-| E8 | mm<1 | Invalid |
-| E9 | mm>12 | Invalid |
+| E7 | 1<=MM<=12 | Valid |
+| E8 | MM<1 | Invalid |
+| E9 | MM>12 | Invalid |
 
-Year: 
+Year (YYYY): 
 | Partition ID | Range | Status |
 |----------------------|-------|--------|
-| E10 | 1900 and 2015 | Valid |
-| E11 | Less than 1 | Invalid |
-| E12 | Greater than 2015 | Invalid |
+| E10 | 1900<=YYYY<=2015 | Valid |
+| E11 | YYYY<1900 | Invalid |
+| E12 | YYYY>2015 | Invalid |
+
