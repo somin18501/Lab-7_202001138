@@ -273,8 +273,142 @@ public class TestFunctions {
         assertEquals(2, UnitTest.triangle(5, 6, 10));
     }
 }
-
 ```
 **Junit Testing Output** <br/>
 
 ![image](https://user-images.githubusercontent.com/77292724/231783233-2e58f5e7-e5ae-4f2c-8d73-97f0fb98d002.png)
+
+### P5: Prefix Problem
+
+| Tester Action and Input Data | Expected Outcome | Test Case Type           |
+| ---------------------------- | ---------------- | ------------------------ |
+| s1="", s2=""                 | true             | Boundary Condition       |
+| s1="hell", s2="hello"        | true             | Equivalence Partitioning |
+| s1="hell", s2="hell"         | true             | Boundary Condition       |
+| s1="", s2="hell"             | true             | Boundary Condition       |
+| s1="hello", s2="hell"        | false            | Equivalence Partitioning |
+| s1="he ll", s2="hell"        | false            | Boundary Condition       |
+| s1=" hell", s2="hello"       | false            | Boundary Condition       |
+
+**Junit Testing Code** <br/>
+```
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestFunctions {
+
+    @Test
+    public void testPrefix() {
+        assertTrue(UnitTest.prefix("", ""));
+        assertTrue(UnitTest.prefix("hell", "hello"));
+        assertTrue(UnitTest.prefix("hell", "hell"));
+        assertTrue(UnitTest.prefix("", "hell"));
+        assertFalse(UnitTest.prefix("hello", "hell"));
+        assertFalse(UnitTest.prefix("he ll", "hell"));
+    }
+}
+```
+**Junit Testing Output** <br/>
+
+![image](https://user-images.githubusercontent.com/77292724/231787027-d44b327a-823c-4f82-b059-4a83a37e180e.png)
+
+### P6: Assumes the problem domain of P4 with A, B, and C as floating values instead of integers
+
+### A. Equivalence classes for the system
+
+The possible equivalence classes and their corresponding conditions are as follows:
+
+| Equivalence Class    | Neccessary Condition                                  |
+| -------------------- | ----------------------------------------------------- |
+| Invalid Triangle     | A > B+C or B > A+C or C > A+B                         |
+| Scalene Triangle     | A != B and B != C and C != A                          |
+| Isoceles Triangle    | either A == B or B == C or A == C                     |
+| Equilateral Triangle | A == B and B == C                                     |
+| Right-angle Triangle | A^2 + B^2 = C^2 or A^2 = B^2 + C^2 or B^2 + A^2 = C^2 |
+
+### B. Test Cases for Equivalence Classes
+
+Following are list of test cases each belonging to one of the defined Equivalence class
+
+| Test Case | Condition           | Expected Outcome     |
+| --------- | ------------------- | -------------------- |
+| 1         | A = 7, B = 7, C = 7 | Equilateral Triangle |
+| 2         | A = 5, B = 12, C = 13 | Right-angle Triangle |
+| 3         | A = 4, B = 4, C = 3 | Isosceles Triangle   |
+| 4         | A = 4, B = 6, C = 7 | Scalene Triangle     |
+| 5         | A = 1, B = 2, C = 3 | Invalid Triangle     |
+
+### C. Boundary Condition A + B > C (scalene triangle)
+
+Below is the list of possible corner cases looking like scalene triangle but are not
+
+| Test Case | Condition                 | Expected Outcome |
+| --------- | ------------------------- | ---------------- |
+| 1         | A = 2, B = 3, C = 5       | Invalid Triangle |
+| 2         | A = 1, B = 2, C = 3       | Invalid Triangle |
+| 3         | A = 1, B = 1, C = 2       | Invalid Triangle |
+| 4         | A = 0.1, B = 0.1, C = 0.3 | Invalid Triangle |
+| 5         | A = 1, B = 2, C = 2.9     | Scalene Triangle |
+
+### D. Boundary Condition A = C (isosceles triangle)
+
+Below is the list of possible corner cases looking like isosceles triangle but are not
+
+| Test Case | Condition                   | Expected Outcome   |
+| --------- | --------------------------- | ------------------ |
+| 1         | A = -4, B = 3, C = -4       | Invalid Triangle   |
+| 2         | A = 0, B = 2, C = 0         | Invalid Triangle   |
+| 3         | A = 1, B = 3, C = 1         | Invalid Triangle   |
+| 4         | A = 0.1, B = 0.3, C = 0.1   | Invalid Triangle   |
+| 5         | A = 0.15, B = 0.2, C = 0.15 | Isosceles Triangle |
+
+### E. Boundary Condition A = B = C (equilateral triangle)
+
+Below is the list of possible corner cases looking like isosceles triangle but are not
+
+| Test Case | Condition                 | Expected Outcome     |
+| --------- | ------------------------- | -------------------- |
+| 1         | A = -4, B = -4, C = -4    | Invalid Triangle     |
+| 2         | A = 0, B = 0, C = 0       | Invalid Triangle     |
+| 3         | A = 10, B = 10, C = 10    | Equilateral Triangle |
+| 4         | A = 0.1, B = 0.1, C = 0.1 | Equilateral Triangle |
+
+### F. Boundary Condition $A^2$ + $B^2$ = $C^2$ (right-angle triangle)
+
+Below is the list of possible corner cases looking like right-angle triangle but are not
+
+| Test Case | Condition                    | Expected Outcome      |
+| --------- | ---------------------------- | --------------------- |
+| 1         | A = 3, B = 4, C = 5          | Right Angled Triangle |
+| 2         | A = -4, B = -3, C = 5        | Invalid Triangle      |
+| 3         | A = -1, B = -1.414, C = 1.73 | Invalid Triangle      |
+| 3         | A = 1, B = 1.414, C = 1.73   | Right Angled Triangle |
+
+### G. Non-triangle Case
+
+Below is the list of possible Invalid Triangle cases
+
+| Test Case | Condition                    | Expected Outcome |
+| --------- | ---------------------------- | ---------------- |
+| 1         | A = 3, B = 4, C = 8          | Invalid Triangle |
+| 2         | A = -4, B = -3, C = 5        | Invalid Triangle |
+| 3         | A = -1, B = -1.414, C = 1.73 | Invalid Triangle |
+| 4         | A = 111, B = 1.414, C = 9.73 | Invalid Triangle |
+| 5         | A = 1, B = 53, C = 9.73      | Invalid Triangle |
+| 6         | A = 1, B = 1.414, C = -9.73  | Invalid Triangle |
+| 7         | A = 0, B = 0, C = 0          | Invalid Triangle |
+
+### H. Non-positive Input
+
+Below is the list of possible Invalid Triangle cases
+
+| Test Case | Condition        | Expected Outcome |
+| --------- | ---------------- | ---------------- |
+| 1         | a=-1, b=2, c=3   | Invalid Triangle |
+| 2         | a=-4, b=-5, c=-7 | Invalid Triangle |
+| 3         | a=1, b=-5, c=10  | Invalid Triangle |
+
+---
